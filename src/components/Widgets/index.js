@@ -1,11 +1,10 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Widget = styled.div`
   background-color: ${({ theme }) => theme.colors.widgetBg};
   border-radius: ${({ theme }) => theme.borderRadius}; 
   color: #444;
   overflow: hidden;
-  font-family: 'Poppins', sans-serif;
   box-shadow: rgba(17, 12, 46, 0.08) 0px 48px 40px 0px;
   &:not(:first-child){
     margin-top:30px;
@@ -25,7 +24,7 @@ const Widget = styled.div`
     font-weight: 400;
     line-height: 1;
   }
-`
+`;
 
 Widget.Header = styled.header`
   display: flex;
@@ -37,7 +36,7 @@ Widget.Header = styled.header`
   * {
     margin: 0;
   }
-`
+`;
 
 Widget.Content = styled.div`
   padding: 24px 32px 32px 32px;
@@ -51,6 +50,27 @@ Widget.Content = styled.div`
     list-style: none;
     padding: 0;
   }
-`
+`;
 
-export default Widget
+Widget.Button = styled.button`
+    background-color: ${({ theme }) => theme.colors.secondary};
+    border-radius: ${({ theme }) => theme.borderRadius};
+    width: 100%;
+    border: none;
+    color: #fff;
+    margin: 20px 0;
+    padding: 15px 0;
+    font-size: 20px;
+    cursor: pointer;
+`;
+
+Widget.Input = styled.input`
+    outline: none;
+    border: none;
+    background-color: ${({ theme }) => theme.colors.mainBg};
+    border-radius: ${({ theme }) => theme.borderRadius};
+    padding: 15px 20px;
+    width: 100%;
+`;
+
+export default Widget;

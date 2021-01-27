@@ -1,23 +1,12 @@
-import styled from 'styled-components'
-import Widget from '../src/components/Widgets'
-import Footer from '../src/components/Footer'
-import QuizBackground from '../src/components/QuizBackground'
-import GitHubCorner from '../src/components/GitHubCorner'
-import Head from 'next/head'
-import db from '../db.json'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
-const Title = styled.h1`
-  font-size: 50px;
-  text-align: center;
-  color: ${({ theme }) => theme.colors.secondary};
-`
-
-// const BackgroundImage = styled.div`
-//   background-color: ${({ theme }) => theme.colors.mainBg};
-//   background-size: cover;
-//   background-position: center;
-//   height: 100vh;
-// `
+import Widget from '../src/components/Widgets';
+import Footer from '../src/components/Footer';
+import QuizBackground from '../src/components/QuizBackground';
+import GitHubCorner from '../src/components/GitHubCorner';
+import QuizLogo from '../src/components/QuizLogo';
 
 const QuizContainer = styled.div`
   width: 100%;
@@ -28,55 +17,53 @@ const QuizContainer = styled.div`
     margin: auto;
     padding: 15px;
   }
-`
+`;
 
 export default function Home() {
-  return(
+  const router = useRouter();
+  const [name, setName] = useState('');
+  return (
     <>
-      <Head>
-        <title>{db.title}</title>
-        <meta property="og:title" content="My page title" key="title" />
-        <meta name="description" content=""/>
+      <QuizBackground>
+        <QuizContainer>
+          <QuizLogo />
+          <Widget>
+            <Widget.Header>
+              <h1>Quiz da OCM</h1>
+            </Widget.Header>
+            <Widget.Content>
+              <p>salve salve família</p>
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                router.push(`/quiz?name=${name}`);
+              }}
+              >
+                <Widget.Input
+                  type="text"
+                  placeholder="Digite seu nome pra jogar"
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
+                <Widget.Button type="submit" disabled={name.length === 0}>
+                  Jogar [seuNome]
+                </Widget.Button>
+              </form>
 
-        <meta property="og:type" content="website"/>
-        <meta property="og:url" content="https://quiz-kappa.vercel.app/"/>
-        <meta property="og:title" content={db.title}/>
-        <meta property="og:description" content={db.description}/>
-        <meta property="og:image" content={db.bg}/>
+            </Widget.Content>
+          </Widget>
 
-        <meta property="twitter:card" content={db.bg}/>
-        <meta property="twitter:url" content="https://quiz-kappa.vercel.app/"/>
-        <meta property="twitter:title" content={db.title}/>
-        <meta property="twitter:description" content={db.description}/>
-        <meta property="twitter:image" content={db.bg}/>
+          <Widget>
+            <Widget.Content>
+              <h1>Quiz da OCM</h1>
+              <p>salve salve família</p>
+            </Widget.Content>
+          </Widget>
 
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700;800;900&display=swap" rel="stylesheet"/>
-      </Head>
-      <QuizBackground backgroundImage={db.bg}>
-      <QuizContainer>
-        <Widget>
-          <Widget.Header>
-            <h1>Quiz da OCM</h1>
-          </Widget.Header>
-          <Widget.Content>
-            <p>salve salve família</p>
-
-          </Widget.Content>
-        </Widget>
-
-        <Widget>
-          <Widget.Content>
-            <h1>Quiz da OCM</h1>
-            <p>salve salve família</p>
-
-          </Widget.Content>
-        </Widget>
-        <Footer/>
-      </QuizContainer>
-      <GitHubCorner/>
-      </QuizBackground>  
+          <Footer />
+        </QuizContainer>
+        <GitHubCorner />
+      </QuizBackground>
     </>
-
-  )
+  );
 }

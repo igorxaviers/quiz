@@ -29,7 +29,7 @@ const SVGWrapper = styled.svg`
       animation:octocat-wave 560ms ease-in-out
     }
   }
-`
+`;
 
 // eslint-disable-next-line react/prop-types
 export default function GitHubCorner({ projectUrl }) {
@@ -43,5 +43,5 @@ export default function GitHubCorner({ projectUrl }) {
         </SVGWrapper>
       </a>
     </Wrapper>
-  )
-} 
+  );
+}
