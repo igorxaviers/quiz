@@ -1,5 +1,5 @@
 {
-    "bg": "https://wallpaperaccess.com/full/2379005.jpg",
+    "bg": "https://igorxavier.dev/background.jpg",
     "title": "Quiz CSS da Alura",
     "description": "Teste os seus conhecimentos sobre CSS e vamos ver quantos layouts você vai deixar de quebrar",
     "questions": [
@@ -39,6 +39,6 @@
         "wrong": "#FF5722",
         "success": "#4CAF50"
       },
-      "borderRadius": "8px"
+      "borderRadius": "12px"
     }
   }

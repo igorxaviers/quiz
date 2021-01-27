@@ -5,8 +5,8 @@ const Widget = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius}; 
   color: #444;
   overflow: hidden;
-  font-family: system-ui;
-  box-shadow: rgba(17, 12, 46, 0.05) 0px 48px 40px 0px;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: rgba(17, 12, 46, 0.08) 0px 48px 40px 0px;
   &:not(:first-child){
     margin-top:30px;
   }
